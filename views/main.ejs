@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header'); -%>
+   <body>
+   <%- include('layouts/heading'); -%>
+   <%- include('layouts/navbar'); -%>
+   
+   
+      <div class="main">
+         <h1>European Health Insurance Card</h1>  
+         This application is meant create a QR code for a paper attestation which will contain a full verifiable attestation.
+         
+         <h2>General Functionality</h2>
+         <ol  type="1">            
+            <li>Read a JSON schema\n'</li>
+            <li>Generate a JSON document from the schema\n' +</li>
+            <li>Validate the JSON document against the schema\n' +</li>
+            <li>Write the JSON document to a file\n' +</li>
+            <li>Transform JSON file to CBOR file\n' +</li>            
+            <li>Sign the CBOR file with a private key as COSE_Sign1\n' +</li>
+            <li>Write the COSE_Sign1 file to a file\n' +</li>            
+            <li>zlib compress the base 45 encoded COSE_Sign1 file\n' +</li>
+            <li>Base 45 encode the COSE_Sign1 file\n' +</li>
+            <li>Transform the zlib file to a QR code\n'</li>
+         </ol>
+         <h2>Pre requisites</h2>
+         <ol  type="I">                        
+            <li>Create TMP 2.0 software to use onboard TMP 2.0 module as HSM</li>
+            <li>Create singing tree with X509 certificates\n' +</li>
+            <ol  type="a">                        
+               <li>Root CA</li>
+               <li>Intermediate CA</li>
+               <li>Leaf CA</li>               
+            </ol>
+            <li>use CA for siginging and verifying</li>
+         </ol>
+      </div>
+   </body>
+</html>-%
+

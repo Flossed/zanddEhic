@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header'); -%>
+   <body>
+   <%- include('layouts/heading'); -%>
+   <%- include('layouts/navbar'); -%>
+      <div class="main">
+         <h1>Create a QR code from String</h1>
+         Please fill in the String which should be converted to a QR code.
+            <form action="/QRCodeFromString" method="post">
+                <input type="text" id="inputString" name="inputString" placeholder="String to convert to QR code">
+                <input type="submit" value="Create QR Code">
+            </form>
+
+
+         
+      </div>   
+   </body>
+</html>

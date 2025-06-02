@@ -1,0 +1,32 @@
+<html lang="en">
+<%- include('layouts/header'); -%>
+   <body>
+   <%- include('layouts/heading'); -%>
+   <%- include('layouts/navbar'); -%>
+      <div class="main">
+         <h1 style="text-align: center;">Login</h1>
+         <div class="loginSpace">
+            In order to be able to access this page you need to login.<br>
+            Please fill in your username and password.<br><p><br>
+            <div>
+               <form action="/login" method="post">
+                  <div class="container">
+                    <p><label>Username:</label>
+                     <input rows="1"  cols="40" type="text" placeholder="Enter Username" id="userName" name="userName">
+                     <p><label >Password:</label>
+                     <input type="password" placeholder="Enter Password" id="userPassword" name="userPassword"><br>                     
+                  </div>
+                  <br><p><br><br><p><br>
+                  <div >
+                    <button type="submit">Login</button><button type="button">Cancel</button><br><p><br>
+                    <span class="psw">Forgot <a href="#">password?</a></span><span class="psw" style="padding-left:150px;">Create <a href="#">Account</a></span>
+                  </div>
+               </form>
+            </div>
+        </div>
+
+        
+      </div>
+   </body>
+</html>
+

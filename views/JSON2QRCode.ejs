@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header'); -%>
+   <body onload="init(<%=inputJSON%>)">
+   <%- include('layouts/heading'); -%>
+   <%- include('layouts/navbar'); -%>
+      <div class="main">
+         <h1>Load JSON file</h1>
+         Load the JSON file that needs to be converted to a QR Code.<br>
+         <table style="width:45%;border:none;">
+            <tr>
+               <td style="width:45%;border:none;">Load JSON file to convert to QR Code.</td>
+               <td style="border:none;"><button id="Load"   type="button"  onclick="openFile()">Load JSON</button></td>   
+            </tr>
+            <tr>
+               <td style="border:none;">Convert JSON to QR Code</td>
+               <td style="border:none;"><button id="convert" type="button"  onclick="formulierActie('convertData');">Convert JSON2QRCODE</button></td> 
+         </table>
+         <div id="fileHook"></div>
+         <h2>Contents</h2>          
+         
+         <form id="QRCODEForm" action="/manageJSON2QR" method="POST">
+            <textarea  style="display:none" id="inputJSON" name="inputJSON"></textarea> 
+            <textarea  rows='100'cols='80' id="displayJson" name="displayJson"></textarea> 
+        </form>
+      </div>
+      <script src="./js/JSON2QRCode.js"></script>   
+   </body>
+</html> 

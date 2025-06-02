@@ -1,0 +1,8 @@
+{   "application"   : {   "logFileName"                    : "EHICQRC001",
+                          "applicationName"                : "EHICQRC001",
+                          "logTracelevel"                  : "trace",
+                          "consoleOutput"                  : "on",        
+                          "logPath"                       : "./logs/"
+                      }
+}
+

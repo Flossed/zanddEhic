@@ -1,0 +1,58 @@
+#########################################################################################################
+# .gitignore in root of project
+#  created for nod.js with express
+# exclude everythin and explicity include what is needed to run project and stored in git.
+#########################################################################################################
+
+/*
+*.bak
+*.xml
+controllers/_ARCH
+services/_ARCH     
+public/docs
+public/docsold
+!.gitignore
+!automation
+!*.txt
+!*.js
+!*.css
+!*.esj
+!*.json
+!*.bat
+!*.sh
+!/views
+!/views/layouts
+!/services
+!/controllers
+!/public
+!/public/css
+!/models
+!/test
+!/scripts
+!/config
+!/documentation
+!/DataSet
+!/Schemas
+
+#########################################################################################################
+#   1. /*                           'exclude everything'
+#   2. *.bak                        ' exclude any bak file (already covered by 1.) 
+#   3. !automation                  ' automation, in this project a jenkins groovy file for devops 
+#   4. !*.js                        ' any java script file in any directory
+#   5. !*.css                       ' any css file in any directory
+#   6. !*.esj                       ' any express file in any directory
+#   7. !*.json                      ' any json file in any directory
+#   8. !*.bat                       ' any bat files in any directory
+#   9. !*.sh                        ' any linux shell files in any directory (used for Devops automation)
+#  10. !*.txt                       ' any documentation to support the project.
+#  11. !/views                      ' the directory views , express directory containing the view of the MVC pattern 
+#  12. !/views/layouts              ' the directory views/layouts , express directory containing the templates for the view of the MVC pattern
+#  13. !/services                   ' the directory services , nod.js middleware directory containing services supporting the applcaition
+#  14. !/controllers                ' the directory contorllers , express directory containing the controller view of the MVC pattern  
+#  15. !/public                     ' the directory public , express directory containing supporting artefacts the view of the MVC pattern
+#  16. !/public/css                 ' the directory public/css , express directory containing supporting css files the view of the MVC pattern should be covered by 14)
+#  17. !/models                     ' the directory models , express directory containing the model of the MVC pattern (*database spec for mongodb scripts)
+#  18. !/test                       ' the directory test , BDD directory containing supertest/mocha/chai tests to verify application
+#  19. !/scripts                    ' the directory scripts , script directory containing scripts required for devops
+#  20. !/documentation              ' the directory documentation ,  containing any suipporting text documentation for the project 
+#########################################################################################################

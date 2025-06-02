@@ -1,0 +1,165 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://SCHEMALOCATION/schemas/ehic",
+  "type": "object",
+  "unevaluatedProperties": false,
+  "properties": {
+    "countryData": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "cardName": {
+          "$ref": "#/$defs/EHICCardNameType"
+        },
+        "issuingState": {
+          "$ref": "#/$defs/EHICIssuingStateType"
+        }
+      },
+      "required": [
+        "cardName",
+        "issuingState"
+      ]
+    },
+    "cardHolder": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/EHICHolderNameType"
+        },
+        "givenNames": {
+          "$ref": "#/$defs/EHICHolderGivenNamesType"
+        },
+        "birthDate": {
+          "$ref": "#/$defs/EHICHolderBirthDateType"
+        },
+        "personalID": {
+          "$ref": "#/$defs/EHICHolderPersonalIDType"
+        }
+      },
+      "required": [
+        "name",
+        "givenNames",
+        "birthDate",
+        "personalID"
+      ]
+    },
+    "competentInstitution": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "institutionName": {
+          "$ref": "#/$defs/EHICInstitutionNameType"
+        },
+        "institutionID": {
+          "$ref": "#/$defs/EHICInstitutionIDType"
+        }
+      },
+      "required": [
+        "institutionName",
+        "institutionID"
+      ]
+    },
+    "card": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "cardID": {
+          "$ref": "#/$defs/EHICCardIDType"
+        },
+        "expiryDate": {
+          "$ref": "#/$defs/EHICExpiryDateType"
+        }
+      },
+      "required": [
+        "cardID",
+        "expiryDate"
+      ]
+    }
+  },
+  "$defs": {
+    "EHICCardNameType": {
+      "type": "string",
+      "minLength": 40,
+      "maxLength": 40
+    },
+    "EHICIssuingStateType": {
+      "$ref": "#/$defs/EHICCountryType"
+    },
+    "EHICHolderNameType": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 40
+    },
+    "EHICHolderGivenNamesType": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 35
+    },
+    "EHICHolderBirthDateType": {
+      "$ref": "#/$defs/EHICDateType"
+    },
+    "EHICHolderPersonalIDType": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 20
+    },
+    "EHICInstitutionNameType": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 21
+    },
+    "EHICInstitutionIDType": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 10
+    },
+    "EHICCardIDType": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 20
+    },
+    "EHICExpiryDateType": {
+      "$ref": "#/$defs/EHICDateType"
+    },
+    "EHICDateType": {
+      "type": "string",
+      "format": "date"
+    },
+    "EHICCountryType": {
+      "enum": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "EL",
+        "HU",
+        "IS",
+        "IE",
+        "IT",
+        "LV",
+        "LI",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "NO",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "CH",
+        "UK"
+      ]
+    }
+  }
+}
