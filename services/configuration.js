@@ -40,6 +40,7 @@ function Config()
         console.log("configuration:Config:Starting")        
         
         nconf.file("default", "./config/default.json");
+        console.log("configuration:Config:done")    
     } 
     catch(ex)
     {   console.log("configuration:Config:An Exception occurred:["+ex+"]")

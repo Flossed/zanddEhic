@@ -5,33 +5,9 @@
    Notes            :
 
 */
-/* ------------------     External Application Libraries      -----------------*/
-/* ------------------ End External Application Libraries      -----------------*/
-
-/* --------------- External Application Libraries Initialization --------------*/
-/* ----------- End External Application Libraries Initialization --------------*/
-
-/* ------------------------------------- Controllers --------------------------*/
-/* -------------------------------- End Controllers ---------------------------*/
-
-/* ------------------------------------- Services -----------------------------*/
 const {logger,applicationName}          = require( '../services/generic' );
 const EC                                = require( '../services/errorCatalog' );
 const eudcc                             = require( '../services/eudcc' );
-//const { Console } = require('winston/lib/winston/transports');
-/* -------------------------------- End Services ------------------------------*/
-
-/* ------------------------------------- Models -------------------------------*/
-/* -------------------------------- End Models --------------------------------*/
-
-/* ---------------------------------  Application constants    ----------------*/
-
-/* --------------------------------- End Application constants ----------------*/
-
-/* --------------- Internal Application Libraries Initialization --------------*/
-/* ----------- End Internal Application Libraries Initialization --------------*/
-
-/* ----------------------------- Private Functions   --------------------------*/
 
 
 async function unknownHandler ( req,res )
@@ -46,6 +22,8 @@ async function unknownHandler ( req,res )
     }
 }
 
+
+
 async function aboutHandler ( req,res )
 {   try
     {   logger.trace( applicationName + ':generic:aboutHandler():Started' );
@@ -56,21 +34,10 @@ async function aboutHandler ( req,res )
     catch ( ex )
     {   logger.exception( applicationName + ':generic:aboutHandler():An exception occurred :[' + ex + '].' );
     }
-}
- 
-/* 
-Flow: the user logs in with a username and password. 
-      1. validation of the presence of username and password
-         if either username or password is missing, the user is redirected to the login page with an error message.       
-      2. the existence of username is checked agains the DB
-        if the username does not exist, the user is redirected to the login page with an error message.
-      3. the password is checked against the DB using bcrypt compare. 
-        if the password is incorrect, the user is redirected to the login page with an error message.
-      4. if the username and password are correct, the session cookie will contain evidence of a user and a validity token for session duration.
+} 
 
 
 
-*/
 async function loginHandler ( req,res )
 {   try
     {   logger.trace( applicationName + ':generic:loginHandler():Started' );
@@ -86,8 +53,7 @@ async function loginHandler ( req,res )
 
 async function homeHandler ( req,res )
 {   try
-    {   logger.trace( applicationName + ':generic:homeHandler():Started' );
-        console.log(req.session)
+    {   logger.trace( applicationName + ':generic:homeHandler():Started' );        
         res.render( 'main' );
         logger.trace( applicationName + ':generic:homeHandler():Done' );
     }
@@ -95,6 +61,8 @@ async function homeHandler ( req,res )
     {   logger.exception( applicationName + ':generic:homeHandler():An exception occurred :[' + ex + '].' );
     }
 }
+
+
 
 async function actionsHandler ( req,res )
 {   try
@@ -120,18 +88,22 @@ async function actionsHandler ( req,res )
     }
 }
 
+
+
 async function QRCodeScannner ( req,res )
 {   try
     {   logger.trace( applicationName + ':generic:QRCodeScannner():Started' );
-        let PDA1PN = null;
-        if( req.route.methods.post  !== 'undefined' )
-        {   const retval = await eudcc.QR2JSON(req.body.decodedQRCode);
-            PDA1PN         = retval.body;
-            res.render( 'scanQRCode', {  PDA1PN : PDA1PN  } );
-        }
-        else
-        {    res.render( 'scanQRCode')  ;
+
+        if ( typeof req.body.decodedQRCode  !== 'undefined' ) 
+        {   logger.debug( applicationName + ':generic:QRCodeScannner():Decoded QR Code:[' + req.body.decodedQRCode + '].' );
+            console.log(eudcc.QR2JSON ( req.body.decodedQRCode ));
+            const PDA1PN = await eudcc.QR2JSON( req.body.decodedQRCode );
+            console.log('PDA1PN: ', PDA1PN);
+            res.render( 'scanQRCode', {PDA1PN: PDA1PN } );  ;
+            return
         } 
+        
+        res.render( 'scanQRCode', {PDA1PN: ''} );  ;
         logger.trace( applicationName + ':generic:QRCodeScannner():Done' );
     }
     catch ( ex )
@@ -187,10 +159,20 @@ async function manageJSON2QR ( req,res )
 }
 
 
-/* -------------------------- End Private Functions   ------------------------*/
+async function generateTemplateHandler ( req,res )
+{   try
+    {   logger.trace( applicationName + ':generic:generateTemplateHandler():Started' );
+        const retVal = await eudcc.JSON2QR();
+        res.render( 'generateTemplate' );
+        logger.trace( applicationName + ':generic:generateTemplateHandler():Done' );
+    }
+    catch ( ex )
+    {   logger.exception( applicationName + ':generic:generateTemplateHandler():An exception occurred :[' + ex + '].' );
+    }
+}
 
- 
-/* --------------------------- Public Functions   ----------------------------*/
+
+
 async function main ( req, res )
 {   try
     {   logger.trace( applicationName + ':generic:main():Started' ); 
@@ -215,7 +197,8 @@ async function main ( req, res )
                                          break;   
            case '/login'               : loginHandler( req,res );
                                          break;
-
+           case '/generateTemplate'    : generateTemplateHandler( req,res );
+                                         break;
            default            :          unknownHandler( req,res );
                                          break;
         }
@@ -225,10 +208,5 @@ async function main ( req, res )
     {   logger.exception( applicationName + ':generic:main():An exception occurred: [' + ex + '].' );
     }
 }
-/* ----------------------------- End Public Functions   ------------------------*/
 
-/* ----------------------------------External functions ------------------------*/
-module.exports.main                     = main;
-/* ----------------------------------End External functions --------------------*/
-/* LOG:
-*/
+module.exports.main                     =   main;

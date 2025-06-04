@@ -1,0 +1,895 @@
+{
+ "path": [],
+ "property": "instance",
+ "message": "does not match allOf schema [subschema 0] with 5 error[s]:",
+ "schema": "ehic-schema.json",
+ "instance": {
+  "hn": {
+   "fn": "fdavtuqifnduyegwiykhcbdlkjnyeujfgcclgiiv",
+   "gn": "myncpdfbnqmemnnabdfaapsoaolmkcettom"
+  },
+  "dob": "",
+  "hi": "oglcenrjbctnycjrunxq",
+  "ii": "srayimbrcs",
+  "in": "kykvglpwdjagvgrkoirmh",
+  "ci": "kjmmjywwdfxndgskpehb",
+  "ic": "",
+  "sd": "",
+  "ed": "",
+  "id": ""
+ },
+ "name": "allOf",
+ "argument": {
+  "id": "[subschema 0]",
+  "length": 5,
+  "valid": {
+   "instance": {
+    "hn": {
+     "fn": "fdavtuqifnduyegwiykhcbdlkjnyeujfgcclgiiv",
+     "gn": "myncpdfbnqmemnnabdfaapsoaolmkcettom"
+    },
+    "dob": "",
+    "hi": "oglcenrjbctnycjrunxq",
+    "ii": "srayimbrcs",
+    "in": "kykvglpwdjagvgrkoirmh",
+    "ci": "kjmmjywwdfxndgskpehb",
+    "ic": "",
+    "sd": "",
+    "ed": "",
+    "id": ""
+   },
+   "schema": {
+    "properties": {
+     "hn": {
+      "title": "Name and given names",
+      "description": "Surname(s), forename(s) of the EHIC holder both in generic charset and in machine readable travel documents standard",
+      "type": "object",
+      "properties": {
+       "fn": {
+        "title": "Surname",
+        "description": "The surname or primary name(s) of the person addressed in the EHIC",
+        "type": "string",
+        "maxLength": 40,
+        "examples": [
+         "d'Červenková Panklová"
+        ]
+       },
+       "gn": {
+        "title": "Forename",
+        "description": "The forename(s) of the person addressed in the EHIC",
+        "type": "string",
+        "maxLength": 35,
+        "examples": [
+         "Jiřina-Maria Alena"
+        ]
+       }
+      },
+      "required": [
+       "fn",
+       "gn"
+      ]
+     },
+     "dob": {
+      "title": "Date of birth",
+      "description": "Date of Birth of the holder",
+      "type": "string",
+      "pattern": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$"
+     },
+     "hi": {
+      "title": "Personal Identification number",
+      "description": "The personal identification number detail used by the issuing Member State. (In case such number does not exist, the identification number of the person from whom the rights derive shall be used)",
+      "type": "string",
+      "maxLength": 20
+     },
+     "ii": {
+      "title": "Identification number of the institution",
+      "description":"Identification code awarded nationally to the 'institution', viz. the 
+competent institution of insurance","type":"string","minLength":4,"maxLength":10},"in":{"title":"Name of the institution","description":"The acronym of the institution is provided instead of the full name","type":"string","maxLength":21},"ci":{"title":"Card Identification number","description":"Logical identification number of the card","type":"string","minLength":20,"maxLength":20},"ic":{"title":"Card Issuer Country","description":"Identification code of the country having issued the EHIC","type":"string","enum":["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","EL","HU","IS","IE","IT","LV","LI","LT","LU","MT","NL","NO","PL","PT","RO","SK","SI","ES","SE","CH","UK"]},"sd":{"title":"Entitlement Start date","description":"Start date of the entitlement to receive health care during a temporary stay in a Member State other than the insuring Member State","type":"string","pattern":"^(29[/-
+      ]02[/-
+      ]((19|20)([
+       2468
+      ][
+       048
+      ]|[
+       13579
+      ][
+       26
+      ]|0[
+       48
+      ])|2000)|((0[
+       1-9
+      ]|[
+       12
+      ][
+       0-9
+      ]|30)[/-
+      ](0[
+       469
+      ]|11)[/-
+      ](19|20)[
+       0-9
+      ]{
+       2
+      }|(0[
+       1-9
+      ]|[
+       12
+      ][
+       0-9
+      ]|3[
+       01
+      ])[/-
+      ](0[
+       13578
+      ]|1[
+       02
+      ])[/-
+      ](19|20)[
+       0-9
+      ]{
+       2
+      }|(0[
+       1-9
+      ]|1[
+       0-9
+      ]|2[
+       0-8
+      ])[/-
+      ]02[/-
+      ](19|20)[
+       0-9
+      ]{
+       2
+      }))$"},"ed":{"title":"Expiry date","description":"End date of the validity of the card","type":"string","pattern":"^(29[/-
+      ]02[/-
+      ]((19|20)([
+       2468
+      ][
+       048
+      ]|[
+       13579
+      ][
+       26
+      ]|0[
+       48
+      ])|2000)|((0[
+       1-9
+      ]|[
+       12
+      ][
+       0-9
+      ]|30)[/-
+      ](0[
+       469
+      ]|11)[/-
+      ](19|20)[
+       0-9
+      ]{
+       2
+      }|(0[
+       1-9
+      ]|[
+       12
+      ][
+       0-9
+      ]|3[
+       01
+      ])[/-
+      ](0[
+       13578
+      ]|1[
+       02
+      ])[/-
+      ](19|20)[
+       0-9
+      ]{
+       2
+      }|(0[
+       1-9
+      ]|1[
+       0-9
+      ]|2[
+       0-8
+      ])[/-
+      ]02[/-
+      ](19|20)[
+       0-9
+      ]{
+       2
+      }))$"},"id":{"title":"Date of issuance","description":"Date when the document was issued","type":"string","pattern":"^(29[/-
+      ]02[/-
+      ]((19|20)([
+       2468
+      ][
+       048
+      ]|[
+       13579
+      ][
+       26
+      ]|0[
+       48
+      ])|2000)|((0[
+       1-9
+      ]|[
+       12
+      ][
+       0-9
+      ]|30)[/-
+      ](0[
+       469
+      ]|11)[/-
+      ](19|20)[
+       0-9
+      ]{
+       2
+      }|(0[
+       1-9
+      ]|[
+       12
+      ][
+       0-9
+      ]|3[
+       01
+      ])[/-
+      ](0[
+       13578
+      ]|1[
+       02
+      ])[/-
+      ](19|20)[
+       0-9
+      ]{
+       2
+      }|(0[
+       1-9
+      ]|1[
+       0-9
+      ]|2[
+       0-8
+      ])[/-
+      ]02[/-
+      ](19|20)[
+       0-9
+      ]{
+       2
+      }))$"}},"required":["ic","hn","dob","hi","ii","in","ci","sd","ed","id"]},"options":{},"path":[],"propertyPath":"instance","errors":[{"path":["dob"],"property":"instance.dob","message":"does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\"",
+      "schema": {
+       "title": "Date of birth",
+       "description": "Date of Birth of the holder",
+       "type": "string",
+       "pattern": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$"
+      },
+      "instance": "",
+      "name": "pattern",
+      "argument": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$",
+      "stack": "instance.dob does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\""
+     },
+     {
+      "path": [
+       "ic"
+      ],
+      "property": "instance.ic",
+      "message": "is not one of enum values: AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,EL,HU,IS,IE,IT,LV,LI,LT,LU,MT,NL,NO,PL,PT,RO,SK,SI,ES,SE,CH,UK",
+      "schema": {
+       "title": "Card Issuer Country",
+       "description": "Identification code of the country having issued the EHIC",
+       "type": "string",
+       "enum": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "EL",
+        "HU",
+        "IS",
+        "IE",
+        "IT",
+        "LV",
+        "LI",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "NO",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "CH",
+        "UK"
+       ]
+      },
+      "instance": "",
+      "name": "enum",
+      "argument": [
+       "AT",
+       "BE",
+       "BG",
+       "HR",
+       "CY",
+       "CZ",
+       "DK",
+       "EE",
+       "FI",
+       "FR",
+       "DE",
+       "EL",
+       "HU",
+       "IS",
+       "IE",
+       "IT",
+       "LV",
+       "LI",
+       "LT",
+       "LU",
+       "MT",
+       "NL",
+       "NO",
+       "PL",
+       "PT",
+       "RO",
+       "SK",
+       "SI",
+       "ES",
+       "SE",
+       "CH",
+       "UK"
+      ],
+      "stack": "instance.ic is not one of enum values: AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,EL,HU,IS,IE,IT,LV,LI,LT,LU,MT,NL,NO,PL,PT,RO,SK,SI,ES,SE,CH,UK"
+     },
+     {
+      "path": [
+       "sd"
+      ],
+      "property": "instance.sd",
+      "message": "does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\"",
+      "schema": {
+       "title": "Entitlement Start date",
+       "description": "Start date of the entitlement to receive health care during a temporary stay in a Member State other than the insuring Member State",
+       "type": "string",
+       "pattern": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$"
+      },
+      "instance": "",
+      "name": "pattern",
+      "argument": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$",
+      "stack": "instance.sd does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\""
+     },
+     {
+      "path": [
+       "ed"
+      ],
+      "property": "instance.ed",
+      "message": "does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\"",
+      "schema": {
+       "title": "Expiry date",
+       "description": "End date of the validity of the card",
+       "type": "string",
+       "pattern": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$"
+      },
+      "instance": "",
+      "name": "pattern",
+      "argument": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$",
+      "stack": "instance.ed does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\""
+     },
+     {
+      "path": [
+       "id"
+      ],
+      "property": "instance.id",
+      "message": "does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\"",
+      "schema": {
+       "title": "Date of issuance",
+       "description": "Date when the document was issued",
+       "type": "string",
+       "pattern": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$"
+      },
+      "instance": "",
+      "name": "pattern",
+      "argument": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$",
+      "stack": "instance.id does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\""
+     }
+    ],
+    "disableFormat": false
+   }
+  },
+  "stack": "instance does not match allOf schema [subschema 0] with 5 error[s]:"
+ },
+ {
+  "path": [
+   "dob"
+  ],
+  "property": "instance.dob",
+  "message": "does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\"",
+  "schema": {
+   "title": "Date of birth",
+   "description": "Date of Birth of the holder",
+   "type": "string",
+   "pattern": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$"
+  },
+  "instance": "",
+  "name": "pattern",
+  "argument": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$",
+  "stack": "instance.dob does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\""
+ },
+ {
+  "path": [
+   "ic"
+  ],
+  "property": "instance.ic",
+  "message": "is not one of enum values: AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,EL,HU,IS,IE,IT,LV,LI,LT,LU,MT,NL,NO,PL,PT,RO,SK,SI,ES,SE,CH,UK",
+  "schema": {
+   "title": "Card Issuer Country",
+   "description": "Identification code of the country having issued the EHIC",
+   "type": "string",
+   "enum": [
+    "AT",
+    "BE",
+    "BG",
+    "HR",
+    "CY",
+    "CZ",
+    "DK",
+    "EE",
+    "FI",
+    "FR",
+    "DE",
+    "EL",
+    "HU",
+    "IS",
+    "IE",
+    "IT",
+    "LV",
+    "LI",
+    "LT",
+    "LU",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "SK",
+    "SI",
+    "ES",
+    "SE",
+    "CH",
+    "UK"
+   ]
+  },
+  "instance": "",
+  "name": "enum",
+  "argument": [
+   "AT",
+   "BE",
+   "BG",
+   "HR",
+   "CY",
+   "CZ",
+   "DK",
+   "EE",
+   "FI",
+   "FR",
+   "DE",
+   "EL",
+   "HU",
+   "IS",
+   "IE",
+   "IT",
+   "LV",
+   "LI",
+   "LT",
+   "LU",
+   "MT",
+   "NL",
+   "NO",
+   "PL",
+   "PT",
+   "RO",
+   "SK",
+   "SI",
+   "ES",
+   "SE",
+   "CH",
+   "UK"
+  ],
+  "stack": "instance.ic is not one of enum values: AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,EL,HU,IS,IE,IT,LV,LI,LT,LU,MT,NL,NO,PL,PT,RO,SK,SI,ES,SE,CH,UK"
+ },
+ {
+  "path": [
+   "sd"
+  ],
+  "property": "instance.sd",
+  "message": "does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\"",
+  "schema": {
+   "title": "Entitlement Start date",
+   "description": "Start date of the entitlement to receive health care during a temporary stay in a Member State other than the insuring Member State",
+   "type": "string",
+   "pattern": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$"
+  },
+  "instance": "",
+  "name": "pattern",
+  "argument": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$",
+  "stack": "instance.sd does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\""
+ },
+ {
+  "path": [
+   "ed"
+  ],
+  "property": "instance.ed",
+  "message": "does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\"",
+  "schema": {
+   "title": "Expiry date",
+   "description": "End date of the validity of the card",
+   "type": "string",
+   "pattern": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$"
+  },
+  "instance": "",
+  "name": "pattern",
+  "argument": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$",
+  "stack": "instance.ed does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\""
+ },
+ {
+  "path": [
+   "id"
+  ],
+  "property": "instance.id",
+  "message": "does not match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\"",
+  "schema": {
+   "title": "Date of issuance",
+   "description": "Date when the document was issued",
+   "type": "string",
+   "pattern": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$"
+  },
+  "instance": "",
+  "name": "pattern",
+  "argument": "^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$",
+  "stack":"instance.id does not 
+match pattern \"^(29[/-]02[/-]((19|20)([2468][048]|[13579][26]|0[48])|2000)|((0[1-9]|[12][0-9]|30)[/-](0[469]|11)[/-](19|20)[0-9]{2}|(0[1-9]|[12][0-9]|3[01])[/-](0[13578]|1[02])[/-](19|20)[0-9]{2}|(0[1-9]|1[0-9]|2[0-8])[/-]02[/-](19|20)[0-9]{2}))$\""
+ },
+ {
+  "path": [],
+  "property": "instance",
+  "message": "does not match allOf schema [subschema 1] with 1 error[s]:",
+  "schema": "ehic-schema.json",
+  "instance": {
+   "hn": {
+    "fn": "fdavtuqifnduyegwiykhcbdlkjnyeujfgcclgiiv",
+    "gn": "myncpdfbnqmemnnabdfaapsoaolmkcettom"
+   },
+   "dob": "",
+   "hi": "oglcenrjbctnycjrunxq",
+   "ii": "srayimbrcs",
+   "in": "kykvglpwdjagvgrkoirmh",
+   "ci": "kjmmjywwdfxndgskpehb",
+   "ic": "",
+   "sd": "",
+   "ed": "",
+   "id": ""
+  },
+  "name": "allOf",
+  "argument": {
+   "id": "[subschema 1]",
+   "length": 1,
+   "valid": {
+    "instance": {
+     "hn": {
+      "fn": "fdavtuqifnduyegwiykhcbdlkjnyeujfgcclgiiv",
+      "gn": "myncpdfbnqmemnnabdfaapsoaolmkcettom"
+     },
+     "dob": "",
+     "hi": "oglcenrjbctnycjrunxq",
+     "ii": "srayimbrcs",
+     "in": "kykvglpwdjagvgrkoirmh",
+     "ci": "kjmmjywwdfxndgskpehb",
+     "ic": "",
+     "sd": "",
+     "ed": "",
+     "id": ""
+    },
+    "schema": {
+     "description": "Contraint that the combined length of the 'Identification number of institution' and the 'Name of the institution' fields must not exceed 25 characters",
+     "anyOf": [
+      {
+       "properties": {
+        "ii": {
+         "maxLength": 10
+        },
+        "in": {
+         "maxLength": 15
+        }
+       }
+      },
+      {
+       "properties": {
+        "ii": {
+         "maxLength": 9
+        },
+        "in": {
+         "maxLength": 16
+        }
+       }
+      },
+      {
+       "properties": {
+        "ii": {
+         "maxLength": 8
+        },
+        "in": {
+         "maxLength": 17
+        }
+       }
+      },
+      {
+       "properties": {
+        "ii": {
+         "maxLength": 7
+        },
+        "in": {
+         "maxLength": 18
+        }
+       }
+      },
+      {
+       "properties": {
+        "ii": {
+         "maxLength": 6
+        },
+        "in": {
+         "maxLength": 19
+        }
+       }
+      },
+      {
+       "properties": {
+        "ii": {
+         "maxLength": 5
+        },
+        "in": {
+         "maxLength": 20
+        }
+       }
+      },
+      {
+       "properties": {
+        "ii": {
+         "maxLength": 4
+        },
+        "in": {
+         "maxLength": 21
+        }
+       }
+      }
+     ]
+    },
+    "options": {},
+    "path": [],
+    "propertyPath": "instance",
+    "errors": [
+     {
+      "path": [],
+      "property": "instance",
+      "message": "is not any of [subschema 0],[subschema 1],[subschema 2],[subschema 3],[subschema 4],[subschema 5],[subschema 6]",
+      "schema": {
+       "description": "Contraint that the combined length of the 'Identification number of institution' and the 'Name of the institution' fields must not exceed 25 characters",
+       "anyOf": [
+        {
+         "properties": {
+          "ii": {
+           "maxLength": 10
+          },
+          "in": {
+           "maxLength": 15
+          }
+         }
+        },
+        {
+         "properties": {
+          "ii": {
+           "maxLength": 9
+          },
+          "in": {
+           "maxLength": 16
+          }
+         }
+        },
+        {
+         "properties": {
+          "ii": {
+           "maxLength": 8
+          },
+          "in": {
+           "maxLength": 17
+          }
+         }
+        },
+        {
+         "properties": {
+          "ii": {
+           "maxLength": 7
+          },
+          "in": {
+           "maxLength": 18
+          }
+         }
+        },
+        {
+         "properties": {
+          "ii": {
+           "maxLength": 6
+          },
+          "in": {
+           "maxLength": 19
+          }
+         }
+        },
+        {
+         "properties": {
+          "ii": {
+           "maxLength": 5
+          },
+          "in": {
+           "maxLength": 20
+          }
+         }
+        },
+        {
+         "properties": {
+          "ii": {
+           "maxLength": 4
+          },
+          "in": {
+           "maxLength": 21
+          }
+         }
+        }
+       ]
+      },
+      "instance": {
+       "hn": {
+        "fn": "fdavtuqifnduyegwiykhcbdlkjnyeujfgcclgiiv",
+        "gn": "myncpdfbnqmemnnabdfaapsoaolmkcettom"
+       },
+       "dob": "",
+       "hi": "oglcenrjbctnycjrunxq",
+       "ii": "srayimbrcs",
+       "in": "kykvglpwdjagvgrkoirmh",
+       "ci": "kjmmjywwdfxndgskpehb",
+       "ic": "",
+       "sd": "",
+       "ed": "",
+       "id": ""
+      },
+      "name": "anyOf",
+      "argument": [
+       "[subschema 0]",
+       "[subschema 1]",
+       "[subschema 2]",
+       "[subschema 3]",
+       "[subschema 4]",
+       "[subschema 5]",
+       "[subschema 6]"
+      ],
+      "stack": "instance is not any of [subschema 0],[subschema 1],[subschema 2],[subschema 3],[subschema 4],[subschema 5],[subschema 6]"
+     }
+    ],
+    "disableFormat": false
+   }
+  },
+  "stack": "instance does not match allOf schema [subschema 1] with 1 error[s]:"
+ },
+ {
+  "path": [],
+  "property": "instance",
+  "message": "is not any of [subschema 0],[subschema 1],[subschema 2],[subschema 3],[subschema 4],[subschema 5],[subschema 6]",
+  "schema": {
+   "description": "Contraint that the combined length of the 'Identification number of institution' and the 'Name of the institution' fields must not exceed 25 characters",
+   "anyOf": [
+    {
+     "properties": {
+      "ii": {
+       "maxLength": 10
+      },
+      "in": {
+       "maxLength": 15
+      }
+     }
+    },
+    {
+     "properties": {
+      "ii": {
+       "maxLength": 9
+      },
+      "in": {
+       "maxLength": 16
+      }
+     }
+    },
+    {
+     "properties": {
+      "ii": {
+       "maxLength": 8
+      },
+      "in": {
+       "maxLength": 17
+      }
+     }
+    },
+    {
+     "properties": {
+      "ii": {
+       "maxLength": 7
+      },
+      "in": {
+       "maxLength": 18
+      }
+     }
+    },
+    {
+     "properties": {
+      "ii": {
+       "maxLength": 6
+      },
+      "in": {
+       "maxLength": 19
+      }
+     }
+    },
+    {
+     "properties": {
+      "ii": {
+       "maxLength": 5
+      },
+      "in": {
+       "maxLength": 20
+      }
+     }
+    },
+    {
+     "properties": {
+      "ii": {
+       "maxLength": 4
+      },
+      "in": {
+       "maxLength": 21
+      }
+     }
+    }
+   ]
+  },
+  "instance": {
+   "hn": {
+    "fn": "fdavtuqifnduyegwiykhcbdlkjnyeujfgcclgiiv",
+    "gn": "myncpdfbnqmemnnabdfaapsoaolmkcettom"
+   },
+   "dob": "",
+   "hi": "oglcenrjbctnycjrunxq",
+   "ii": "srayimbrcs",
+   "in": "kykvglpwdjagvgrkoirmh",
+   "ci": "kjmmjywwdfxndgskpehb",
+   "ic": "",
+   "sd": "",
+   "ed": "",
+   "id": ""
+  },
+  "name": "anyOf",
+  "argument": [
+   "[subschema 0]",
+   "[subschema 1]",
+   "[subschema 2]",
+   "[subschema 3]",
+   "[subschema 4]",
+   "[subschema 5]",
+   "[subschema 6]"
+  ],
+  "stack": "instance is not any of [subschema 0],[subschema 1],[subschema 2],[subschema 3],[subschema 4],[subschema 5],[subschema 6]"
+ }

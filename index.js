@@ -1,130 +1,120 @@
 /* File             : index.js
    Author           : Daniel S. A. Khan
-   Copywrite        : Daniel S. A. Khan (c) 2023
-   Description      : Main file for PDA1PriorNotification001
+   Copywrite        : Daniel S. A. Khan (c) 2018-2025
+   Description      : Main file for zanddeEhic
    Notes            :
 */
-
-const DOTENV                           = require( 'dotenv' ).config();
-const express                          = require( 'express' );
-const app                              = express();
-const expressSession                   = require('express-session');
-const bodyParser                       = require( 'body-parser' );
-const favicon                          = require( 'serve-favicon' );
-const path                             = require( 'path' );
-const cors                             = require('cors');
-
-const genCntrl                         = require( './controllers/generic' );
-const {logger}                          = require( './services/generic' );
-const config                           = require( './services/configuration' );
-const EC                               = require( './services/errorCatalog' );
-const html5QRcode                      = require( 'html5-qrcode' );
-
-
-const applicationName                  = config.get( 'application:applicationName' );
+const mongoose                         =   require( 'mongoose' );
+const express                          =   require( 'express' );
+const bodyParser                       =   require( 'body-parser' );
+const fileUpload                       =   require( 'express-fileupload' );
+const favicon                          =   require( 'serve-favicon' );
+const path                             =   require( 'path' );
+const cors                             =   require( 'cors' );
+const {logger}                         =   require( './services/generic' );
+const {ApplicationPort}                =   require( './services/generic' );
+const {applicationName}                =   require( './services/generic' );
+const {dbName}                         =   require( './services/generic' );
+const {version}                        =   require( './services/generic' );
+const {lastFix}                        =   require( './services/generic' );
+const genCntrl                         =   require( './controllers/generic' );
 
 
-const ApplicationPort                  = process.env.SERVICEENDPOINTPORT;
+const db                               =    mongoose.connection;
+const app                              =    express();
+
 
 // eslint-disable-next-line no-undef
 const directoryName                     = __dirname;
+
+
+let port = process.env.PORT;
+if ( port == null || port == '' ) { port = ApplicationPort; }
+
+
+
 app.set( 'view engine','ejs' );
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+mongoose.connect( dbName ) ; 
+app.use( bodyParser.json() );
+app.use( fileUpload() );
+app.use( bodyParser.urlencoded( {extended:true} ) );
 app.use( express.static( 'public' ) );
-app.use( favicon( path.join( directoryName, 'public/img', 'zandd.ico' ) ) );
-app.use(cors());
-//app.use(expressSession({ secret: 'listnen quitly little cat' }))
+app.use( favicon( path.join( directoryName, 'public', 'img', 'zandd.ico' ) ) );
+app.use( cors() );
 
 
 
-app.use(function(req, res, next) 
-{   res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+app.use( function ( req, res, next )
+{   res.header( 'Access-Control-Allow-Origin', '*' );
+    res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
     next();
-});
+} );
+
+
 
 function setRouting ()
 {   try
-   {   const response                 = { ...EC.noError };
-        response.body                  = '';
-        logger.trace( applicationName + ':index:setRouting:Starting' );
-        app.get( '/',genCntrl.main );
-        app.get( '/JSON2QRCode',genCntrl.main );
-        app.get( '/create',genCntrl.main );
-        app.post( '/manageActions',genCntrl.main );
-        app.get( '/scanQRCode',genCntrl.main );
-        app.post( '/manageQRCodeScan',genCntrl.main );
-        app.get('/QRCodeFromString',genCntrl.main);
-         app.post('/QRCodeFromString',genCntrl.main);
+    {   logger.trace( applicationName + ':index:setRouting:Started ' );        
         app.use( '*', genCntrl.main );
-        logger.trace( applicationName + ':index:setRouting:Done' );
-        return response;
-   }
-   catch ( ex )
-    {   const response                 = EC.exception;
-        response.body                  = ex;
-        logger.exception( applicationName + ':index:setRouting:Exception caught: ',ex );
-        return response;
-    }
-}
-
-function initializeServices ()
-{   try
-   {   logger.trace( applicationName + ':index:initializeServices: Starting' );
-       const timeStamp                = new Date();
-       const response                 = { ...EC.noError };
-
-       logger.info( '********************************************************************************' );
-       logger.info( '*                    Starting ' + applicationName + '                                        *' );
-       logger.info( '*                    Time: ' + timeStamp.toLocaleTimeString( 'de-DE' ) + '                                            *' );
-       logger.info( '*                    Date: ' + timeStamp.toLocaleDateString( 'de-DE' ) + '                                           *' );
-       logger.info( '*                    App listening on port [' + ApplicationPort + ']                              *' );
-       logger.info( '********************************************************************************' );
-
-       logger.trace( applicationName + ':index:initializeServices: Done' );
-       return response;
+        logger.trace( applicationName + ':index:setRouting:Done ' );
     }
     catch ( ex )
-    {   const response                 = EC.exception;
-        response.body                  = ex;
-        logger.exception( applicationName + ':index:initializeServices:Exception caught: ',ex );
-        return response;
+    {   logger.exception( applicationName + ':index:setRouting:An exception Occured:[' + ex + ']' );
     }
 }
+
+
+
+async function initializeServices ()
+{   try
+    {   logger.trace( applicationName + ':index:initializeServices: Starting' );
+
+        const timeStamp                = new Date();
+        const dbNameArray              = dbName.split( '/' );
+
+        const appNameString            = 'Starting ' + applicationName;
+        const timeStampString          = 'Time: ' + timeStamp.toLocaleTimeString( 'de-DE' );
+        const dateString               = 'Date: ' + timeStamp.toLocaleDateString( 'de-DE' );
+        const portString               = 'App listening on port [' + ApplicationPort + ']';
+        const dbString                 = 'DB Name: [' + dbNameArray[dbNameArray.length - 1] + ']';
+        const versionString            = 'Version: [' + version  + ']';
+        const lastFixString            = 'Last Fix: [' + lastFix + ']';
+
+        logger.info( '********************************************************************************' );
+        logger.info( '*'.padEnd( 21 ,' ' ) + appNameString.padEnd( '58',' ' ) + '*' );
+        logger.info( '*'.padEnd( 21 ,' ' ) + timeStampString.padEnd( '58',' ' ) + '*' );
+        logger.info( '*'.padEnd( 21 ,' ' ) + dateString.padEnd( '58',' ' ) + '*' );
+        logger.info( '*'.padEnd( 21 ,' ' ) + portString.padEnd( '58',' ' ) + '*' );
+        logger.info( '*'.padEnd( 21 ,' ' ) + dbString.padEnd( '58',' ' ) + '*' );
+        logger.info( '*'.padEnd( 21 ,' ' ) + versionString.padEnd( '58',' ' ) + '*' );
+        logger.info( '*'.padEnd( 21 ,' ' ) + lastFixString.padEnd( '58',' ' ) + '*' );
+        logger.info( '********************************************************************************' );
+
+        db.on( 'error', console.error.bind( console, 'connection error: ' ) );
+        db.once( 'open',function () { console.log( 'Connected to DB' ); } );
+
+        logger.trace( applicationName + ':index:initializeServices: Done' );
+    }
+    catch ( ex )
+    {   logger.exception( applicationName + ':index:initializeServices:An exception occured:[' + ex + ']' );
+    }
+}
+
+
 
 function main ()
 {   try
-   {   logger.trace( applicationName + ':index:main:Starting' );
-
-        const result                   = setRouting();
-        if ( result.returnCode !== EC.noError.returnCode )
-        {   logger.error( applicationName + ':index:main:setRouting returned errors',result );
-            return result;
-        }
-
-        logger.debug( applicationName + ':index:main:setRouting is done succesfully' );
-
-        const retVal                  = initializeServices();
-        if ( retVal.returnCode !== EC.noError.returnCode )
-        {   logger.error( applicationName + ':index:main:initializeServices returned errors',retVal );
-            return retVal;
-        }
-
-        logger.debug( applicationName + ':index:main:initializeServices is done succesfully' );
-
+    {   logger.trace( applicationName + ':index:main:Starting' );
+        setRouting();
+        initializeServices();
         logger.trace( applicationName + ':index:main:Done' );
     }
-   catch ( ex )
-    {   const response                 = EC.exception;
-        response.body                  = ex;
-        //logger.debug( applicationName + ':index:main:Exception caught: ',ex );
-        return response;
+    catch ( ex )
+    {   logger.exception( applicationName + 'index:main:An exception Occurred:[' + ex + ']' );
     }
 }
 
-module.exports = app.listen( ApplicationPort );
-main();
 
-/* LOG:
-*/
+
+module.exports = app.listen( port );
+main();

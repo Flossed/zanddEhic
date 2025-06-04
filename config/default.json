@@ -1,8 +1,14 @@
-{   "application"   : {   "logFileName"                    : "EHICQRC001",
-                          "applicationName"                : "EHICQRC001",
-                          "logTracelevel"                  : "trace",
-                          "consoleOutput"                  : "on",        
-                          "logPath"                       : "./logs/"
-                      }
+{
+ "application": {
+  "ServiceEndPointPort":  50080,
+  "dbName": "mongodb://192.168.129.197:27017/EHICQRC001",  
+  "logFileName": "EHICQRC001",
+  "applicationName": "EHICQRC001",
+  "logPath": "./logs/",
+  "logTracelevel": "debug",
+  "consoleOutput": "on",
+  "version": "v0.0.1",
+  "lastFix": "new BoilerpLate",
+  "targetDirectory" : "/home/decaan/_APPS/Corporation"
+ }
 }
-

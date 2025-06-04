@@ -900,6 +900,7 @@ async function _03_validateJSONDocument ( schema, jsonDocument )
 async function _04_writeJSONDocument ( jsonDocument )
 {   try
     {   logger.trace( applicationName + ':eudcc:_04_writeJSONDocument:Starting' );
+        console.log('jsonDocument',jsonDocument)
 
         const outputJson               = process.env.OUTPUTJSON;
 
@@ -1145,6 +1146,7 @@ async function _11_transformZlibToQR ( inputData, versionQRCode )
         catch ( err )
         {  console.log( 'Nothing to delete' );
         }
+        logger.debug( applicationName + ':eudcc:_11_transformZlibToQR:qrCodeFile',qrCodeFile );
         QRCode.toFile( qrCodeFile, [{ data: inputData }], qrOptions, function ( error )
                        {  if ( error )
                            {   logger.error( applicationName + ':eudcc:_11_transformZlibToQR:Error whilst generating QR code' );
@@ -1327,11 +1329,13 @@ async function JSON2QR ()
         console.log( 'BRrrrrrroooooooooooooohoooooooooooo',qrCodeVersion );
         //_11_getQREncodingVersion
         const resultQR                = await _11_transformZlibToQR( base45Encoded.body, qrCodeVersion.body );
+        console.log('resultQR',resultQR)
 
         if ( resultQR.returnCode !== EC.noError.returnCode )
         {   logger.error( applicationName + 'JSON2QR:Error in _11_transformZlibToQR',resultQR );
             return resultQR;
         }
+        
 
         logger.debug( applicationName + ':JSON2QR:_11_transformZlibToQR is done succesfully' );
 
@@ -1555,7 +1559,7 @@ async function QR2JSON ( QRCodeBuffer )
 
         logger.debug( applicationName + ':QR2JSON:_03_validateJSONDocument is done succesfully' );
         const retVAl                 = { ... EC.noError } ;
-        retVAl.body                  = JSON.stringify( resultJSON.body );
+        retVAl.body                  =  resultJSON.body ;
 
         return retVAl;
     }
