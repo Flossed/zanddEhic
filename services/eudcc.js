@@ -691,8 +691,7 @@ function traverseObject ( schema, jsonObject, data )
 {   try
     {   logger.trace( applicationName + ':eudcc:traverseObject:Starting' );
         let response                   = { ...EC.noError };
-        console.log('jsonObject',jsonObject)
-        console.log('data',data)
+        
         
         if ( ( typeof jsonObject === 'undefined' || jsonObject === null ) || ( typeof data === 'undefined' || data === null ) )
         {   logger.error( applicationName + ':eudcc:traverseObject:incorrect input parameters' );
@@ -734,7 +733,7 @@ async function generateDataFromSchema ( schema, data )
         const schemaObject             = await $RefParser.dereference( schema, {allowUnknownAttributes: false} );
         let propertyQArray= pathJson.nodes(schemaObject, '$..properties',1);
         let schemaProperties = propertyQArray[0].value;
-        console.log('schemaProperties',schemaProperties)
+        
         
 
         jsonDocument                   = jsonDocument.concat( '{' );
@@ -767,15 +766,17 @@ async function validateSchema ( schema, jsonInput )
             const response               = EC.badRequest;
             return response;
         }
-        //console.log( 'Braaaaaaaaaaaaaaaaah : jsonInput',jsonInput );
+        
 
         const validator                = new Validator();
 
         validator.debug                = true;
         const schemaObject             = await $RefParser.dereference( schema, {allowUnknownAttributes: false} );
         const JSONdata                 = JSON.parse( jsonInput );
+        
 
         const valResult                = validator.validate( JSONdata, schemaObject );
+        
 
         logger.debug( applicationName + ':eudcc:validateSchema:valResult',valResult.errors );
         if ( valResult.errors.length > 0 )
@@ -853,10 +854,10 @@ async function _02_generateJSONDocument ( schema )
         }
 
         const data                     = Object.entries( dataFile  );
-        //console.log('data',schema); 
+        
 
         const jsonResponse             = await generateDataFromSchema( schema,data );
-        console.log('kfjklfkljfdlkjdfslkjfdsjlk',jsonResponse)
+        
 
         if ( jsonResponse.returnCode !== EC.noError.returnCode )
         {   logger.error( applicationName + ':eudcc:_02_generateJSONDocument:Error in generateDataFromSchema',jsonResponse );
@@ -900,7 +901,7 @@ async function _03_validateJSONDocument ( schema, jsonDocument )
 async function _04_writeJSONDocument ( jsonDocument )
 {   try
     {   logger.trace( applicationName + ':eudcc:_04_writeJSONDocument:Starting' );
-        console.log('jsonDocument',jsonDocument)
+
 
         const outputJson               = process.env.OUTPUTJSON;
 
@@ -1006,7 +1007,7 @@ async function _07_signCBOROPbject ( cborObject, keyInformation )
         const buf = await cose.sign.create( headers, cborObject, signer );
 
         const bufVerify = await cose.sign.verify( buf, verifier );
-        //console.log('Verified message: ' + bufVerify.toString('utf8'));
+        
         await fs.writeFile( outputCOSE, buf.toString( 'hex' ) );
 
         const response                 = { ...EC.noError } ;
@@ -1102,7 +1103,7 @@ async function _11_getQREncodingVersion ( inputData )
         const dataLength              = inputData.length ;
 
         for ( let i = 0; i < qrcodeVersion.length; i++ )
-        {    console.log( 'QR COde ',qrcodeVersion[i].moduleSize,dataLength );
+        {    logger.debug( pplicationName + ':eudcc:_11_getQREncodingVersion:QR COde:modulesize:'+ qrcodeVersion[i].moduleSize +':datalength:' + dataLength );
              if ( qrcodeVersion[i].moduleSize >= dataLength )
              {   const response                = { ...EC.noError } ;
                  response.body                 = qrcodeVersion[i];
@@ -1274,7 +1275,7 @@ async function JSON2QR ()
 
         logger.debug( applicationName + ':JSON2QR:_04_writeJSONDocument is done succesfully' );
 
-        console.log(result.body); 
+        
 
         const encoded                 = await _05_transformJSONToCBOR( result.body );
 
@@ -1326,10 +1327,9 @@ async function JSON2QR ()
         }
 
         logger.debug( applicationName + ':JSON2QR:_09_base45Encode is done succesfully' );
-        console.log( 'BRrrrrrroooooooooooooohoooooooooooo',qrCodeVersion );
-        //_11_getQREncodingVersion
+        
         const resultQR                = await _11_transformZlibToQR( base45Encoded.body, qrCodeVersion.body );
-        console.log('resultQR',resultQR)
+        
 
         if ( resultQR.returnCode !== EC.noError.returnCode )
         {   logger.error( applicationName + 'JSON2QR:Error in _11_transformZlibToQR',resultQR );
@@ -1407,8 +1407,7 @@ async function JSON2QR2 ( inputJSON )
         }
 
         logger.debug( applicationName + ':JSON2QR2:_09_base45Encode is done succesfully' );
-        console.log( 'BRrrrrrroooooooooooooohoooooooooooo',qrCodeVersion );
-        //_11_getQREncodingVersion
+        
         const resultQR                = await _11_transformZlibToQR( base45Encoded.body, qrCodeVersion.body );
 
         if ( resultQR.returnCode !== EC.noError.returnCode )
@@ -1473,7 +1472,7 @@ async function _25_decodeCBORBuffer ( inputData )
     {   logger.trace( applicationName + ':eudcc:_25_decodeCBORBuffer:Starting' );
 
         const decodedData              = cbor.decode( inputData );
-        console.log( decodedData );
+        
 
         const response                 = { ... EC.noError } ;
         response.body                  = decodedData;
@@ -1537,6 +1536,7 @@ async function QR2JSON ( QRCodeBuffer )
         {   logger.error( applicationName + ':eudcc:QR2JSON:_25_decodeCBORBuffer returned errors',resultJSON );
             return resultJSON;
         }
+            
 
         logger.debug( applicationName + ':eudcc:QR2JSON:_25_decodeCBORBuffer is done succesfully' );
 
@@ -1549,6 +1549,7 @@ async function QR2JSON ( QRCodeBuffer )
         }
 
         logger.debug( applicationName + ':QR2JSON:_01_readJSONSchema is done succesfully' );
+        
 
         const validation                = await _03_validateJSONDocument( schema.body, JSON.stringify( resultJSON.body ) );
 

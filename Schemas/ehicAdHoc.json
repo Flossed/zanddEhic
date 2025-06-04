@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "ehic-schema.json",
   "title": "electronic EHIC/entitlement document",
   "description": "Data Type for the electronic EHIC/entitlement document",

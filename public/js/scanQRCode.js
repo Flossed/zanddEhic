@@ -16,9 +16,9 @@ fileinput.addEventListener("change", (e) => {
     .then((decodedText) => {
       base64String = decodedText.toString("base64");
 
-      document.getElementById("qr-result").innerText = decodedText;
+      document.getElementById("qr-contents").innerText = decodedText;
       document.getElementById("decodedQRCode").innerHTML = decodedText;
-      document.getElementById("QRCODEForm").submit();
+      
     })
     .catch((err) => {
       // failure, handle it.
@@ -37,6 +37,10 @@ function init()
         console.log("Decoded QR Code: ", decodedQRCode);
         document.getElementById("qr-result").innerHTML = JSON.stringify(decodedQRCode.body,null, 2);
     }
+}
+
+function convert()
+{   document.getElementById("QRCODEForm").submit();
 }
 
 

@@ -40,8 +40,7 @@ async function aboutHandler ( req,res )
 
 async function loginHandler ( req,res )
 {   try
-    {   logger.trace( applicationName + ':generic:loginHandler():Started' );
-        console.log(req.body)
+    {   logger.trace( applicationName + ':generic:loginHandler():Started' );        
         res.render( 'login' );
         logger.trace( applicationName + ':generic:loginHandler():Done' );
     }
@@ -69,14 +68,12 @@ async function actionsHandler ( req,res )
     {   logger.trace( applicationName + ':generic:actionsHandler():Started' );
 
         if ( typeof req.route.methods.post !== 'undefined' )
-        {   console.log( 'POST action:[' + req.body.actie + '].' );
-            switch(req.body.actie)
-            {   case 'createData'   :   console.log( 'Create action' );
-                                        eudcc.JSON2QR();
+        {   switch(req.body.actie)
+            {   case 'createData'   :   eudcc.JSON2QR();
                                         break; 	
-                case 'verifyData'   :   console.log( 'Create action' );
+                case 'verifyData'   :   console.log( 'verifyData :NOP' );
                                         break;
-                default             : console.log( 'Unknown action' );
+                default             :   console.log( 'Unknown action' );
                                         break;
             }
         }
@@ -96,9 +93,9 @@ async function QRCodeScannner ( req,res )
 
         if ( typeof req.body.decodedQRCode  !== 'undefined' ) 
         {   logger.debug( applicationName + ':generic:QRCodeScannner():Decoded QR Code:[' + req.body.decodedQRCode + '].' );
-            console.log(eudcc.QR2JSON ( req.body.decodedQRCode ));
+            
             const PDA1PN = await eudcc.QR2JSON( req.body.decodedQRCode );
-            console.log('PDA1PN: ', PDA1PN);
+            
             res.render( 'scanQRCode', {PDA1PN: PDA1PN } );  ;
             return
         } 
@@ -147,8 +144,7 @@ async function String2QRCode ( req,res )
 async function manageJSON2QR ( req,res )
 {   try
     {   logger.trace( applicationName + ':generic:JSON2QRHandler():Started' );        
-        const inputJSON   =req.body.inputJSON;  
-        console.log('vraaag',inputJSON); 
+        const inputJSON   =req.body.inputJSON;          
         eudcc.JSON2QR2(inputJSON);
         res.render( 'JSON2QRCode',{inputJSON:inputJSON });
         logger.trace( applicationName + ':generic:JSON2QRHandler():Done' );

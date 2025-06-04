@@ -13,9 +13,11 @@
          <h1>Scan it</h1> 
          <div id="reader" width="600px" heigth="600px"></div>
          <input type="file" id="qr-input-file" accept="image/*">
+         <button type="button" class="btn btn-outline-primary me-2" data-i18n-key="heading-login" onclick="convert()">Convert</button>
          <div class="PDA1result">
-          <h2>Result</h2>          
-          <textarea  rows='100'cols='80' id="qr-result" name="qr-result"></textarea> 
+          <span style="text-align:center;margin-right:35%;font-weight:bold;font-size:2em;">Contents</span><span style="text-align:center;font-weight:bold;font-size:2em;">Result</span><br>          
+          <textarea  rows='40'cols='80' style="margin-right:10%" id="qr-contents" name="qr-contents"></textarea> <textarea  rows='40'cols='80' id="qr-result" name="qr-result"></textarea> 
+          
       </div>
       </div>
       
