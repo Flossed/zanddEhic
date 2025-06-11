@@ -33,6 +33,7 @@ public/docsold
 !/documentation
 !/DataSet
 !/Schemas
+*/__ARCH/
 
 #########################################################################################################
 #   1. /*                           'exclude everything'

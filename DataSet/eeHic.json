@@ -1,0 +1,38 @@
+{
+	"sub": "EESSI:BE:0100:48b6b16a6a582c086fd5343475df0c4d66cba56c86d146c9e75d5f6f780812b0",
+	"iss": "BE:0100",
+	"nbf": "1735686000",
+	"exp": "1767221999",
+	"iat": "1741734000",
+	"jti": "EESSI:BE:0100:48b6b16a6a582c086fd5343475df0c4d66cba56c86d146c9e75d5f6f780812b0",
+	"vc": {
+		"@context": [
+			"https://www.w3.org/ns/credentials/v2"
+		],
+		"id": "EESSI:BE:0100:48b6b16a6a582c086fd5343475df0c4d66cba56c86d146c9e75d5f6f780812b0",
+		"type": [
+			"VerifiableCredential",
+			"EHICCredential"
+		],
+		"issuer": "BE:0100",
+		"validFrom": "2025-01-01T00:00:00+01:00",
+		"validUntil": "2025-12-31T00:00:00+01:00",
+		"credentialSubject": {
+			"fn": "fdavtuqifnduyegwiykhcbdlkjnyeujfgcclgiiv",
+			"gn": "myncpdfbnqmemnnabdfaapsoaolmkcettom",
+			"dob": "31-12-2002",
+			"hi": "oglcenrjbctnycjrunxq",
+			"ii": "srayimbr",
+			"in": "kykvglpwdjagvgrk",
+			"ci": "kjmmjywwdfxndgskpehb",
+			"ic": "AT",
+			"sd": "31-12-1970",
+			"ed": "31-12-1990",
+			"id": "31-12-1992"
+		},
+		"credentialSchema": {
+			"id": "https://api-conformance.ebsi.eu/trusted-schemas-registry/v2/schemas/z6HkKUAhWgMQqGQEcc1kewTWJrY4nrtadncmid7hsfGV8",
+			"type": "JsonSchema"
+		}
+	}
+}

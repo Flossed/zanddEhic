@@ -59,6 +59,9 @@ or
 * git pull https://citnet.tech.ec.europa.eu/CITnet/stash/scm/essppda1/esspass-pda1-issuer-be.git  // for updating local directories
 * git push -f -u origin HEAD:main
 
+* git tag -n10
+* git describe --tags --abbrev=0
+
 ####################################################################################################
 # END : git cheatsheet
 ####################################################################################################

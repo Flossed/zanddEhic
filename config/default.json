@@ -1,7 +1,7 @@
 {
  "application": {
-  "ServiceEndPointPort":  50080,
-  "dbName": "mongodb://192.168.129.197:27017/EHICQRC001",  
+  "ApplicationPort": 50080,
+  "dbName": "mongodb://192.168.129.197:27017/EHICQRC001",
   "logFileName": "EHICQRC001",
   "applicationName": "EHICQRC001",
   "logPath": "./logs/",
@@ -9,6 +9,14 @@
   "consoleOutput": "on",
   "version": "v0.0.1",
   "lastFix": "new BoilerpLate",
-  "targetDirectory" : "/home/decaan/_APPS/Corporation"
+  "targetDirectory": "/home/decaan/_APPS/Corporation",
+  "SOURCESCHEMA": "E:/_Applications/__ZNDPRODS/zanddEhic/Schemas/ehicAdHoc.json",
+  "DATASET": "E:/_Applications/__ZNDPRODS/zanddEhic/DataSet/DataSet.json",
+  "OUTPUTJSON": "E:/_Applications/__ZNDPRODS/zanddEhic/output/output.json",
+  "OUTPUTCBOR": "E:/_Applications/__ZNDPRODS/zanddEhic/output/output.cbor",
+  "OUTPUTCOSE": "E:/_Applications/__ZNDPRODS/zanddEhic/output/output.cose",
+  "QRCODEFILE": "E:/_Applications/__ZNDPRODS/zanddEhic/output/QRCode.png",
+  "BASE45FILE": "E:/_Applications/__ZNDPRODS/zanddEhic/output/outputBase45.txt",
+  "ZLIBBED": "E:/_Applications/__ZNDPRODS/zanddEhic/output/zlibbed.zlib"
  }
 }

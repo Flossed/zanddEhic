@@ -22,7 +22,7 @@
       </div>
       
       
-      <form id="QRCODEForm" action="/scanQRCode" method="POST">
+      <form id="QRCODEForm" action="/scanQRCode" method="POST" enctype="multipart/form-data">
         <textarea style="display:none;" id="decodedQRCode" name="decodedQRCode"></textarea>         
       </form>
       <script src="./js/html5-qrcode/html5-qrcode.min.js"></script>    

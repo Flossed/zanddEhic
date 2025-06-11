@@ -7,7 +7,7 @@
 */
 const {logger,applicationName}          = require( '../services/generic' );
 const EC                                = require( '../services/errorCatalog' );
-const eudcc                             = require( '../services/eudcc' );
+const eudcc                             = require( '../services/vcManagement' );
 
 
 async function unknownHandler ( req,res )
@@ -145,7 +145,7 @@ async function manageJSON2QR ( req,res )
 {   try
     {   logger.trace( applicationName + ':generic:JSON2QRHandler():Started' );        
         const inputJSON   =req.body.inputJSON;          
-        eudcc.JSON2QR2(inputJSON);
+        eudcc.JSON2QR(inputJSON);
         res.render( 'JSON2QRCode',{inputJSON:inputJSON });
         logger.trace( applicationName + ':generic:JSON2QRHandler():Done' );
     }

@@ -29,7 +29,7 @@ const directoryName                     = __dirname;
 
 
 let port = process.env.PORT;
-if ( port == null || port == '' ) { port = ApplicationPort; }
+if ( port == null || port == '' ) {port  = ApplicationPort; }
 
 
 
