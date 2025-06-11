@@ -8,6 +8,8 @@
 const {logger,applicationName}          = require( '../services/generic' );
 const EC                                = require( '../services/errorCatalog' );
 const eudcc                             = require( '../services/vcManagement' );
+const { getCurrentVersions }            = require( '../services/manageVersion' );
+const versionInformation                = getCurrentVersions();
 
 
 async function unknownHandler ( req,res )
@@ -52,8 +54,8 @@ async function loginHandler ( req,res )
 
 async function homeHandler ( req,res )
 {   try
-    {   logger.trace( applicationName + ':generic:homeHandler():Started' );        
-        res.render( 'main' );
+    {   logger.trace( applicationName + ':generic:homeHandler():Started' );                
+        res.render( 'main' , { currentVersions:versionInformation});
         logger.trace( applicationName + ':generic:homeHandler():Done' );
     }
     catch ( ex )

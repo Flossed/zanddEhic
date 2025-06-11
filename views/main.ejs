@@ -1,40 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('layouts/header'); -%>
-   <body>
+   <body style="background-color: #FEFBE4;">   
    <%- include('layouts/heading'); -%>
-   <%- include('layouts/navbar'); -%>
-   
-   
-      <div class="main">
-         <h1>European Health Insurance Card</h1>  
-         This application is meant create a QR code for a paper attestation which will contain a full verifiable attestation.
-         
-         <h2>General Functionality</h2>
-         <ol  type="1">            
-            <li>Read a JSON schema\n'</li>
-            <li>Generate a JSON document from the schema\n' +</li>
-            <li>Validate the JSON document against the schema\n' +</li>
-            <li>Write the JSON document to a file\n' +</li>
-            <li>Transform JSON file to CBOR file\n' +</li>            
-            <li>Sign the CBOR file with a private key as COSE_Sign1\n' +</li>
-            <li>Write the COSE_Sign1 file to a file\n' +</li>            
-            <li>zlib compress the base 45 encoded COSE_Sign1 file\n' +</li>
-            <li>Base 45 encode the COSE_Sign1 file\n' +</li>
-            <li>Transform the zlib file to a QR code\n'</li>
-         </ol>
-         <h2>Pre requisites</h2>
-         <ol  type="I">                        
-            <li>Create TMP 2.0 software to use onboard TMP 2.0 module as HSM</li>
-            <li>Create singing tree with X509 certificates\n' +</li>
-            <ol  type="a">                        
-               <li>Root CA</li>
-               <li>Intermediate CA</li>
-               <li>Leaf CA</li>               
-            </ol>
-            <li>use CA for siginging and verifying</li>
-         </ol>
-      </div>
+
+
+    <main>
+     <div class="col-lg-8 mx-auto">
+                <div class="text-center mb-5">
+                    <i class="bi bi-person-vcard text-primary" style="font-size: 4rem;"></i>
+                    <h1 class="display-4 fw-bold text-primary" data-i18n-key="main-title"></h1>
+                    <h5 class="lead text-muted" data-i18n-key="main-subtitle"></h5>
+                    <h3 class="display-41 fw-bold text-muted" data-i18n-key="main-subtitle-2"></h3>
+                </div>
+
+                <!-- Features -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <i class="bi bi-file-medical-fill text-primary" style="font-size: 2.5rem;"></i>
+                                <h5 class="card-title mt-3">Request On-line</h5>
+                                <h6 class="card-text">Request your email online via this portal.</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <i class="bi bi-envelope-check text-primary" style="font-size: 2.5rem;"></i>
+                                <h5 class="card-title mt-3">Email Reception</h5>
+                                <h6 class="card-text">Receive the credential via your email.</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body text-center">
+                                <i class="bi bi bi-qr-code text-success" style="font-size: 2.5rem;"></i>
+                                <h5 class="card-title mt-3">Verifiable Credential</h5>
+                                <h6 class="card-text">Strong Authentication of the validity of the EHIC.</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 border-info">
+                            <div class="card-body text-center">
+                                <i class="bi bi-clock-history text-info" style="font-size: 2.5rem;"></i>
+                                <h5 class="card-title mt-3">Immediate availability</h5>
+                                <h6 class="card-text">Get the EHIC when you need it.</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Information -->
+                <div class="card bg-light mt-5">
+                    <div class="card-body">                         
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="bi bi-check-circle text-success"></i> European Citizens Rights Endorsment</li>
+                            <li><i class="bi bi-check-circle text-success"></i> Healthcare abroad covered by your insurance at home</li>                            
+                            <li><i class="bi bi-check-circle text-success"></i> Access the healthcare in case of accidents abroad</li>
+                            <li><i class="bi bi-check-circle text-success"></i> Accepted by all health care providers throughout 27 European Memberstates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+       
+          
+       </div>
+    </main>
+
+    <%- include('layouts/footer'); -%>
    </body>
-</html>-%
+</html>
 

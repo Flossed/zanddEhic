@@ -42,6 +42,9 @@ app.use( express.static( 'public' ) );
 app.use( favicon( path.join( directoryName, 'public', 'img', 'zandd.ico' ) ) );
 app.use( cors() );
 
+app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')));
+app.use('/bootstrap-icons', express.static(path.join(__dirname, 'node_modules/bootstrap-icons')));
+
 
 
 app.use( function ( req, res, next )
